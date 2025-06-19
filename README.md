@@ -1,38 +1,71 @@
-# sv
+# Auro Demo
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A simple demo application showcasing the Auro Design System themes and components.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Theme Switcher**: Easily switch between different Auro Design System themes
+- **Theme Documentation**: Learn how to use the theming system in your own projects
+- **Visual Theme Demo**: See how different UI elements look with each theme
+
+## Available Themes
+
+The application supports the following themes:
+
+- **Alaska** (`aag-theme-as`)
+- **Alaska Classic** (`aag-theme-asc`)
+- **Auro 1** (`aag-theme-a1`) 
+- **Auro 2** (`aag-theme-a2`)
+- **Hawaiian** (`aag-theme-ha`)
+
+## How to Use
+
+### Running the App
 
 ```bash
-# create a new project in the current directory
-npx sv create
+# Install dependencies
+npm install
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+# Start the development server
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Implementing Themes in Your Project
 
-To create a production version of your app:
+To use the Auro Design System themes in your own project:
+
+1. Install the required package:
+   ```bash
+   npm install @aurodesignsystem/design-tokens
+   ```
+
+2. Import the CSS file:
+   ```css
+   @import '@aurodesignsystem/design-tokens/dist/themes/CSSCustomProperties--bundled.css';
+   ```
+
+3. Apply a theme attribute to your HTML:
+   ```html
+   <body data-aag-theme="aag-theme-as">
+     <!-- your content -->
+   </body>
+   ```
+
+4. Use the CSS variables in your styles:
+   ```css
+   .my-element {
+     background-color: var(--ds-basic-color-brand-primary);
+     color: var(--ds-basic-color-texticon-inverse);
+   }
+   ```
+
+## Building for Production
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Resources
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- [Auro Design System](https://auro.alaskaair.com/)
+- [Auro Design Tokens](https://www.npmjs.com/package/@aurodesignsystem/design-tokens)
