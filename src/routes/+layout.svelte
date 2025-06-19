@@ -1,6 +1,7 @@
 <script lang="ts">
 import "../app.css";
 import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
+import "@aurodesignsystem/auro-header";
 
 const { children } = $props();
 </script>
