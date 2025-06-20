@@ -4,8 +4,3 @@
 
 @import "@aurodesignsystem/design-tokens/dist/themes/CSSCustomProperties--bundled.css";
 
-.background-dark {
-	background-color: rgb(
-		from var(--ds-basic-color-surface-inverse) h s calc(l + 5%)
-	);
-}

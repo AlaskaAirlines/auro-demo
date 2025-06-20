@@ -2,34 +2,67 @@
 import { onMount } from "svelte";
 // import "@aurodesignsystem/auro-formkit/auro-select";
 
+/**
+ * Themes configuration:
+ * - value: The value of the theme to be stored in localStorage and used as a data attribute
+ * - label: The display label in the dropdown
+ * - cssFile: The path to the CSS file that should be loaded when this theme is selected
+ */
 const themes = [
 	{
 		value: "aag-theme-as",
 		label: "Alaska",
+		cssFile: "/alaska.global.min.css"
 	},
 	{
 		value: "aag-theme-asc",
 		label: "Alaska Classic",
+		cssFile: "/alaska-classic.global.min.css"
 	},
 	{
 		value: "aag-theme-a1",
 		label: "Auro 1",
+		cssFile: "/auro-1.global.min.css"
 	},
 	{
 		value: "aag-theme-a2",
 		label: "Auro 2",
+		cssFile: "/auro-2.global.min.css"
 	},
 	{
 		value: "aag-theme-ha",
 		label: "Hawaiian",
+		cssFile: "/hawaiian.global.min.css"
 	},
 ];
 
 let currentTheme = themes[0].value;
+let themeLinkElement: HTMLLinkElement | null = null;
 
 function setTheme(theme: string) {
 	currentTheme = theme;
 	document.body.setAttribute("data-aag-theme", theme);
+	
+	// Get the theme object based on the selected value
+	const selectedTheme = themes.find(t => t.value === theme);
+	
+	// Handle CSS file swapping
+	if (selectedTheme) {
+		// Remove the previous theme's CSS if it exists
+		if (themeLinkElement) {
+			document.head.removeChild(themeLinkElement);
+			themeLinkElement = null;
+		}
+		
+		// Add the new theme's CSS if it has one
+		if (selectedTheme.cssFile) {
+			themeLinkElement = document.createElement('link');
+			themeLinkElement.rel = 'stylesheet';
+			themeLinkElement.href = selectedTheme.cssFile;
+			document.head.appendChild(themeLinkElement);
+		}
+	}
+	
 	// Save the theme preference in localStorage for persistence
 	localStorage.setItem("auro-theme", theme);
 }
