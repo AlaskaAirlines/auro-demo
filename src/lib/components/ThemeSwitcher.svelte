@@ -2,7 +2,13 @@
 import { base } from "$app/paths";
 import { onMount } from "svelte";
 
-// import "@aurodesignsystem/auro-formkit/auro-select";
+import "@aurodesignsystem/auro-formkit/auro-select";
+import "@aurodesignsystem/auro-formkit/auro-menu";
+
+// Define interface for auro-select custom element
+interface AuroSelectElement extends HTMLElement {
+	value: string;
+}
 
 /**
  * Themes configuration:
@@ -70,29 +76,55 @@ function setTheme(theme: string) {
 	localStorage.setItem("auro-theme", theme);
 }
 
+function handleThemeChange(event: CustomEvent) {
+	if (event?.detail?.value) {
+		setTheme(event.detail.value);
+	}
+}
+
 onMount(() => {
 	// Try to get the saved theme from localStorage
 	const savedTheme = localStorage.getItem("auro-theme");
+	let themeToUse = currentTheme;
+
 	if (savedTheme && themes.some((theme) => theme.value === savedTheme)) {
-		setTheme(savedTheme);
-	} else {
-		// Set default theme if no saved theme
-		setTheme(currentTheme);
+		themeToUse = savedTheme;
 	}
+
+	// Set the theme in the DOM
+	setTheme(themeToUse);
+
+	// Wait for the component to be defined in the DOM
+	setTimeout(() => {
+		const themeSelect = document.getElementById(
+			"theme-select",
+		) as AuroSelectElement;
+		themeSelect.value = themeToUse;
+		if (themeSelect) {
+			// Set the value and trigger the component to update its UI
+			themeSelect.value = themeToUse;
+
+			// Add event listener for the auroSelect event
+			themeSelect.addEventListener("input", (e: Event) => {
+				const customEvent = e as CustomEvent;
+				handleThemeChange(customEvent);
+			});
+		}
+	}, 100); // Give the component a bit more time to fully initialize
 });
 </script>
 
 <div class="theme-switcher">
   <div class="relative">
-    <select
-      id="theme-select"
-      value={currentTheme}
-      on:change={(e) => setTheme(e.currentTarget.value)}
-      class="block w-full pl-3 pr-10 py-1 bg-white border text-sm border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
-    >
-      {#each themes as theme}
-        <option value={theme.value}>{theme.label}</option>
-      {/each}
-    </select>
+    <auro-select layout="classic" id="theme-select">
+      <auro-menu>
+        {#each themes as theme}
+          <auro-menuoption value={theme.value}>{theme.label}</auro-menuoption>
+        {/each}
+      </auro-menu>
+    </auro-select>
   </div>
 </div>
+
+<style>
+</style>
