@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "@aurodesignsystem/auro-header";
+import "@aurodesignsystem/auro-header";
 </script>
 
 <div class="space-y-8">

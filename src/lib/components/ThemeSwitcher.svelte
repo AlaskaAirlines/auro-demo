@@ -1,6 +1,7 @@
 <script lang="ts">
+import { base } from "$app/paths";
 import { onMount } from "svelte";
-import { base } from '$app/paths';
+
 // import "@aurodesignsystem/auro-formkit/auro-select";
 
 /**
@@ -14,27 +15,27 @@ const themes = [
 	{
 		value: "aag-theme-as",
 		label: "Alaska",
-		cssFile: `${base}/alaska.global.min.css`
+		cssFile: `${base}/alaska.global.min.css`,
 	},
 	{
 		value: "aag-theme-asc",
 		label: "Alaska Classic",
-		cssFile: `${base}/alaska-classic.global.min.css`
+		cssFile: `${base}/alaska-classic.global.min.css`,
 	},
 	{
 		value: "aag-theme-a1",
 		label: "Auro 1",
-		cssFile: `${base}/auro-1.global.min.css`
+		cssFile: `${base}/auro-1.global.min.css`,
 	},
 	{
 		value: "aag-theme-a2",
 		label: "Auro 2",
-		cssFile: `${base}/auro-2.global.min.css`
+		cssFile: `${base}/auro-2.global.min.css`,
 	},
 	{
 		value: "aag-theme-ha",
 		label: "Hawaiian",
-		cssFile: `${base}/hawaiian.global.min.css`
+		cssFile: `${base}/hawaiian.global.min.css`,
 	},
 ];
 
@@ -44,10 +45,10 @@ let themeLinkElement: HTMLLinkElement | null = null;
 function setTheme(theme: string) {
 	currentTheme = theme;
 	document.body.setAttribute("data-aag-theme", theme);
-	
+
 	// Get the theme object based on the selected value
-	const selectedTheme = themes.find(t => t.value === theme);
-	
+	const selectedTheme = themes.find((t) => t.value === theme);
+
 	// Handle CSS file swapping
 	if (selectedTheme) {
 		// Remove the previous theme's CSS if it exists
@@ -55,16 +56,16 @@ function setTheme(theme: string) {
 			document.head.removeChild(themeLinkElement);
 			themeLinkElement = null;
 		}
-		
+
 		// Add the new theme's CSS if it has one
 		if (selectedTheme.cssFile) {
-			themeLinkElement = document.createElement('link');
-			themeLinkElement.rel = 'stylesheet';
+			themeLinkElement = document.createElement("link");
+			themeLinkElement.rel = "stylesheet";
 			themeLinkElement.href = selectedTheme.cssFile;
 			document.head.appendChild(themeLinkElement);
 		}
 	}
-	
+
 	// Save the theme preference in localStorage for persistence
 	localStorage.setItem("auro-theme", theme);
 }

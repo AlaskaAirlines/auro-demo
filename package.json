@@ -7,9 +7,21 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
+		"prepare": "husky",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write",
+		"format": "biome format .",
+		"format:fix": "biome format --write",
+		"biome:fix": "npm run lint:fix && npm run format:fix",
+		"biome": "npm run lint && npm run format"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte,css,html}": [
+			"biome check --write",
+			"biome format --write"
+		]
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0",
@@ -19,6 +31,8 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"@tailwindcss/vite": "^4.0.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
 		"mdsvex": "^0.12.3",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
