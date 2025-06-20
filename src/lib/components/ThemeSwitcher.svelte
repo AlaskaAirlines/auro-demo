@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from "svelte";
+import { base } from '$app/paths';
 // import "@aurodesignsystem/auro-formkit/auro-select";
 
 /**
@@ -8,31 +9,32 @@ import { onMount } from "svelte";
  * - label: The display label in the dropdown
  * - cssFile: The path to the CSS file that should be loaded when this theme is selected
  */
+
 const themes = [
 	{
 		value: "aag-theme-as",
 		label: "Alaska",
-		cssFile: "/alaska.global.min.css"
+		cssFile: `${base}/alaska.global.min.css`
 	},
 	{
 		value: "aag-theme-asc",
 		label: "Alaska Classic",
-		cssFile: "/alaska-classic.global.min.css"
+		cssFile: `${base}/alaska-classic.global.min.css`
 	},
 	{
 		value: "aag-theme-a1",
 		label: "Auro 1",
-		cssFile: "/auro-1.global.min.css"
+		cssFile: `${base}/auro-1.global.min.css`
 	},
 	{
 		value: "aag-theme-a2",
 		label: "Auro 2",
-		cssFile: "/auro-2.global.min.css"
+		cssFile: `${base}/auro-2.global.min.css`
 	},
 	{
 		value: "aag-theme-ha",
 		label: "Hawaiian",
-		cssFile: "/hawaiian.global.min.css"
+		cssFile: `${base}/hawaiian.global.min.css`
 	},
 ];
 
