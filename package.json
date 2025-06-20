@@ -44,8 +44,10 @@
 	"dependencies": {
 		"@aurodesignsystem-dev/auro-formkit": "^0.0.0-pr624.16",
 		"@aurodesignsystem/auro-button": "^11.1.0",
+		"@aurodesignsystem/auro-card": "^5.1.1",
 		"@aurodesignsystem/auro-formkit": "^4.0.2",
 		"@aurodesignsystem/auro-header": "^4.0.1",
+		"@aurodesignsystem/auro-hyperlink": "^5.2.0",
 		"@aurodesignsystem/auro-icon": "^8.0.4",
 		"@aurodesignsystem/design-tokens": "^8.2.1",
 		"@aurodesignsystem/webcorestylesheets": "^9.0.2"

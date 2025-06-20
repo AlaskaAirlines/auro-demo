@@ -2,6 +2,7 @@
 import "../app.css";
 import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
 import "@aurodesignsystem/auro-header";
+import { base } from "$app/paths";
 
 const { children } = $props();
 </script>
@@ -9,7 +10,9 @@ const { children } = $props();
 <div class="min-h-screen bg-gray-100 flex flex-col">
   <header class="bg-white shadow-sm py-4">
     <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-      <auro-header level="1" display="300" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Auro Design System Demo</auro-header>
+      <a href="{base}/">
+        <auro-header level="1" display="300" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Auro Design System Demo</auro-header>
+      </a>
       <div class="w-48">
         <ThemeSwitcher />
       </div>
