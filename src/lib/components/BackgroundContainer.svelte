@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMount, onDestroy } from "svelte";
+import { onDestroy, onMount } from "svelte";
 
 // Props for the component
 const {
@@ -16,37 +16,38 @@ let darkContainerRef = $state<HTMLElement | null>(null);
 // MutationObserver to watch for changes in the DOM
 let observer: MutationObserver;
 
-// Function to set the ondark attribute on the first child only
+// Function to set the ondark attribute on all top-level auro-* web components
 function updateChildrenAttributes() {
 	if (!containerRef) return;
 
 	const isDark = background === "dark" || false;
 
-	// Function to set ondark attribute only on the first child
-	function processFirstChild(node: Element, forceDark: boolean = false) {
-		// Skip non-element nodes
-		if (node.nodeType !== Node.ELEMENT_NODE) return;
+	// Function to process all top-level auro-* web components in a container
+	function processAuroElements(container: Element, forceDark: boolean = false) {
+		// Get all direct children of the container
+		Array.from(container.children).forEach((child) => {
+			// Skip non-element nodes
+			if (child.nodeType !== Node.ELEMENT_NODE) return;
 
-		// Update the ondark attribute based on the container's background
-		if (isDark || forceDark) {
-			node.setAttribute("ondark", "");
-		} else {
-			node.removeAttribute("ondark");
-		}
+			// Check if the element is an auro-* web component
+			const nodeName = child.nodeName.toLowerCase();
+			if (nodeName.startsWith("auro-")) {
+				// Update the ondark attribute based on the container's background
+				if (isDark || forceDark) {
+					child.setAttribute("ondark", "");
+				} else {
+					child.removeAttribute("ondark");
+				}
+			}
+		});
 	}
 
-	// Process only the first child of the main container
-	const firstChild = containerRef.firstElementChild;
-	if (firstChild) {
-		processFirstChild(firstChild as Element);
-	}
+	// Process all auro-* elements in the main container
+	processAuroElements(containerRef);
 
-	// If showing both and dark container reference exists, set ondark on first child in dark container
+	// If showing both and dark container reference exists, set ondark on auro-* elements in dark container
 	if (showBoth && darkContainerRef) {
-		const darkFirstChild = darkContainerRef.firstElementChild;
-		if (darkFirstChild) {
-			processFirstChild(darkFirstChild as Element, true);
-		}
+		processAuroElements(darkContainerRef, true);
 	}
 }
 
@@ -55,7 +56,7 @@ onMount(() => {
 	updateChildrenAttributes();
 
 	// Set up MutationObserver to watch for changes in the DOM
-	observer = new MutationObserver((mutations) => {
+	observer = new MutationObserver(() => {
 		updateChildrenAttributes();
 	});
 
