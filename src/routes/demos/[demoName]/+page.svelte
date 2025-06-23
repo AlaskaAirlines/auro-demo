@@ -16,8 +16,8 @@ let error = null;
 
 onMount(async () => {
 	try {
-		// Import the demo component dynamically
-		const module = await import(/* @vite-ignore */ demoDetails.importPath);
+		// Use the loader function instead of dynamic import
+		const module = await demoDetails.loader();
 		DemoComponent = module.default;
 		loading = false;
 	} catch (err) {
