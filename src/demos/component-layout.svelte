@@ -6,19 +6,19 @@ import BackgroundContainer from "$lib/components/BackgroundContainer.svelte";
 import "@aurodesignsystem/auro-header";
 import "@aurodesignsystem/auro-button";
 import "@aurodesignsystem/auro-icon";
-import { AuroCombobox } from "@aurodesignsystem-dev/auro-formkit/auro-combobox/class";
+import { AuroCombobox } from "@aurodesignsystem/auro-formkit/auro-combobox/class";
 import {
 	AuroCounter,
 	AuroCounterGroup,
-} from "@aurodesignsystem-dev/auro-formkit/auro-counter/class";
-import { AuroDatePicker } from "@aurodesignsystem-dev/auro-formkit/auro-datepicker/class";
-import { AuroDropdown } from "@aurodesignsystem-dev/auro-formkit/auro-dropdown/class";
-import { AuroInput } from "@aurodesignsystem-dev/auro-formkit/auro-input/class";
+} from "@aurodesignsystem/auro-formkit/auro-counter/class";
+import { AuroDatePicker } from "@aurodesignsystem/auro-formkit/auro-datepicker/class";
+import { AuroDropdown } from "@aurodesignsystem/auro-formkit/auro-dropdown/class";
+import { AuroInput } from "@aurodesignsystem/auro-formkit/auro-input/class";
 import {
 	AuroMenu,
 	AuroMenuOption,
-} from "@aurodesignsystem-dev/auro-formkit/auro-menu/class";
-import { AuroSelect } from "@aurodesignsystem-dev/auro-formkit/auro-select/class";
+} from "@aurodesignsystem/auro-formkit/auro-menu/class";
+import { AuroSelect } from "@aurodesignsystem/auro-formkit/auro-select/class";
 
 AuroCounter.register("auro-counter-dev");
 AuroCounterGroup.register("auro-counter-group-dev");
@@ -34,16 +34,15 @@ AuroMenuOption.register("auro-menuoption-dev");
 <div class="space-y-8">
 	
 	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Button</auro-header>
-	<auro-header level="5" display="300">Snowflake</auro-header>
 	<BackgroundContainer showBoth >
-		<auro-button layout="snowflake" shape="pill">Pill</auro-button>
-		<auro-button layout="snowflake" shape="rounded">Rounded</auro-button>
-		<auro-button layout="snowflake" shape="circle">
+		<auro-button shape="pill">Pill</auro-button>
+		<auro-button shape="rounded">Rounded</auro-button>
+		<auro-button shape="circle">
 			<auro-icon customcolor category="interface" name="account-filled"></auro-icon>
 		</auro-button>
 	</BackgroundContainer>
 
-	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Datepicker</auro-header>
+	<!-- <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Datepicker</auro-header>
 	<auro-header level="5" display="300">Snowflake (only available)</auro-header>
 	<BackgroundContainer background="dark" >
 		<auro-datepicker-dev style="width: 306px" layout="snowflake" shape="snowflake" placeholder="MM/DD">
@@ -58,28 +57,26 @@ AuroMenuOption.register("auro-menuoption-dev");
 			<span slot="bib.fullscreen.dateLabel">Choose a date</span>
 		</auro-datepicker-dev>
 
-	</BackgroundContainer>
+	</BackgroundContainer> -->
 
 	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Counter</auro-header>
-
 	<auro-header level="5" display="300">Snowflake</auro-header>
-	<BackgroundContainer showBoth >
-		<auro-counter-group-dev max="10" min="2" isDropdown layout="snowflake" shape="snowflake" size="lg">
-			<div slot="bib.fullscreen.headline">Group fullscreen label</div>
-			<div slot="label">Snowflake Dropdown Group</div>
-			<div slot="helpText">Total must be between 2-10</div>
-
-			<auro-counter-dev>
-				Counter 1
-			</auro-counter-dev>
-			<auro-counter-dev>
-				Counter 2
-			</auro-counter-dev>
-		</auro-counter-group-dev>
+	<BackgroundContainer showBoth>
+		<auro-counter-group-dev  isDropdown layout="snowflake">
+      <div slot="bib.fullscreen.headline">Passengers</div>
+      <div slot="label">Passengers</div>
+      <auro-counter-dev>
+        Adults
+        <span slot="description">18 years or older</span>
+      </auro-counter-dev>
+      <auro-counter-dev>
+        Children
+        <span slot="description">2-17 years</span>
+      </auro-counter-dev>
+    </auro-counter-group-dev>
 	</BackgroundContainer>
 
 	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Dropdown</auro-header>
-
 	<auro-header level="5" display="300">Snowflake</auro-header>
 	<BackgroundContainer showBoth >
 		<auro-dropdown-dev aria-label="custom label" shape="snowflake" size="lg" layout="snowflake" style="width: 249px;">
@@ -132,7 +129,6 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
 	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Select</auro-header>
-
 	<auro-header level="5" display="300">Snowflake</auro-header>
 	<BackgroundContainer showBoth class="flex flex-row gap-4">
 		<auro-select-dev layout="snowflake" shape="snowflake" value="flights" forceDisplayValue style="display:inline-block;">
@@ -287,44 +283,66 @@ AuroMenuOption.register("auro-menuoption-dev");
 		</auro-select-dev>
 	</BackgroundContainer>
 
-	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Combobox</auro-header>
-
+  <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Combobox</auro-header>
 	<auro-header level="5" display="300">Snowflake</auro-header>
-	<BackgroundContainer showBoth>
-		<auro-combobox-dev layout="snowflake" shape="snowflake" size="lg" placeholder="Placeholder content" required style="width: 249px;">
-			<span slot="bib.fullscreen.headline">Bib Header</span>
-			<span slot="label">Name</span>
-			<auro-menu-dev>
-				<auro-menuoption-dev value="Apples" id="option-0">Apples</auro-menuoption-dev>
-				<auro-menuoption-dev value="Oranges" id="option-1">Oranges</auro-menuoption-dev>
-				<auro-menuoption-dev value="Peaches" id="option-2">Peaches</auro-menuoption-dev>
-				<auro-menuoption-dev value="Grapes" id="option-3">Grapes</auro-menuoption-dev>
-				<auro-menuoption-dev value="Cherries" id="option-4">Cherries</auro-menuoption-dev>
-				<auro-menuoption-dev static nomatch>No matching option</auro-menuoption-dev>
-			</auro-menu-dev>
-			<span slot="helpText">
-				Help text - Lorem ipsum solar lorem ipsum solar
-			</span>
-		</auro-combobox-dev>
-		<auro-combobox-dev layout="snowflake" shape="pill" size="lg" placeholder="Placeholder content" required style="width: 249px;">
-			<span slot="bib.fullscreen.headline">Bib Header</span>
-			<span slot="label">Name</span>
-			<auro-menu-dev>
-				<auro-menuoption-dev value="Apples" id="option-0">Apples</auro-menuoption-dev>
-				<auro-menuoption-dev value="Oranges" id="option-1">Oranges</auro-menuoption-dev>
-				<auro-menuoption-dev value="Peaches" id="option-2">Peaches</auro-menuoption-dev>
-				<auro-menuoption-dev value="Grapes" id="option-3">Grapes</auro-menuoption-dev>
-				<auro-menuoption-dev value="Cherries" id="option-4">Cherries</auro-menuoption-dev>
-				<auro-menuoption-dev static nomatch>No matching option</auro-menuoption-dev>
-			</auro-menu-dev>
-			<span slot="helpText">
-				Help text - Lorem ipsum solar lorem ipsum solar
-			</span>
-		</auro-combobox-dev>
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
+		<auro-combobox-dev layout="emphasized" shape="pill" size="xl" placeholder="Placeholder content" required style="width: 249px;">
+      <span slot="bib.fullscreen.headline">Bib Header</span>
+      <span slot="label">Name</span>
+      <auro-menu-dev>
+        <auro-menuoption-dev value="Apples" id="option-0">Apples</auro-menuoption-dev>
+        <auro-menuoption-dev value="Oranges" id="option-1">Oranges</auro-menuoption-dev>
+        <auro-menuoption-dev value="Peaches" id="option-2">Peaches</auro-menuoption-dev>
+        <auro-menuoption-dev value="Grapes" id="option-3">Grapes</auro-menuoption-dev>
+        <auro-menuoption-dev value="Cherries" id="option-4">Cherries</auro-menuoption-dev>
+        <auro-menuoption-dev static nomatch>No matching option</auro-menuoption-dev>
+      </auro-menu-dev>
+      <span slot="helpText">
+        Help text - Lorem ipsum solar lorem ipsum solar
+      </span>
+      <span slot="displayValue">
+        <div>
+          <div class="mainText">Apples</div>
+          <div class="subText">Fruit</div>
+        </div>
+      </span>
+    </auro-combobox-dev>
+
+    <auro-combobox-dev layout="emphasized" shape="pill-left" size="xl" placeholder="Placeholder content" required style="width: 249px;">
+      <span slot="bib.fullscreen.headline">Bib Header</span>
+      <span slot="label">Name</span>
+      <auro-menu-dev>
+        <auro-menuoption-dev value="Apples" id="option-0">Apples</auro-menuoption-dev>
+        <auro-menuoption-dev value="Oranges" id="option-1">Oranges</auro-menuoption-dev>
+        <auro-menuoption-dev value="Peaches" id="option-2">Peaches</auro-menuoption-dev>
+        <auro-menuoption-dev value="Grapes" id="option-3">Grapes</auro-menuoption-dev>
+        <auro-menuoption-dev value="Cherries" id="option-4">Cherries</auro-menuoption-dev>
+        <auro-menuoption-dev static nomatch>No matching option</auro-menuoption-dev>
+      </auro-menu-dev>
+      <span slot="helpText">
+        Help text - Lorem ipsum solar lorem ipsum solar
+      </span>
+    </auro-combobox-dev>
+
+    <auro-combobox-dev layout="emphasized" shape="pill-right" size="xl" placeholder="Placeholder content" required style="width: 249px;">
+      <span slot="bib.fullscreen.headline">Bib Header</span>
+      <span slot="label">Name</span>
+      <auro-menu-dev>
+        <auro-menuoption-dev value="Apples" id="option-0">Apples</auro-menuoption-dev>
+        <auro-menuoption-dev value="Oranges" id="option-1">Oranges</auro-menuoption-dev>
+        <auro-menuoption-dev value="Peaches" id="option-2">Peaches</auro-menuoption-dev>
+        <auro-menuoption-dev value="Grapes" id="option-3">Grapes</auro-menuoption-dev>
+        <auro-menuoption-dev value="Cherries" id="option-4">Cherries</auro-menuoption-dev>
+        <auro-menuoption-dev static nomatch>No matching option</auro-menuoption-dev>
+      </auro-menu-dev>
+      <span slot="helpText">
+        Help text - Lorem ipsum solar lorem ipsum solar
+      </span>
+    </auro-combobox-dev>
 	</BackgroundContainer>
 
-	<auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+  <auro-header level="5" display="300">Emphasized</auro-header>
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-combobox-dev layout="emphasized" shape="pill" size="xl" placeholder="Placeholder content" required style="width: 249px;">
 			<span slot="bib.fullscreen.headline">Bib Header</span>
 			<span slot="label">Name</span>
@@ -374,10 +392,9 @@ AuroMenuOption.register("auro-menuoption-dev");
 		</auro-combobox-dev>
 	</BackgroundContainer>
 
-	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Input</auro-header>
-
+	 <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Input</auro-header>
 	<auro-header level="5" display="300">Snowflake</auro-header>
-	<BackgroundContainer showBoth>
+	<BackgroundContainer background="dark">
 		<auro-input-dev id="snowflakePill" layout="snowflake" shape="snowflake" size="lg" placeholder="Departure" style="width: 249px;" required>
 			<label slot="label">From</label>
 			<span slot="helptext">Example help text</span>
@@ -386,7 +403,7 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
 	<auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-input-dev id="alpha" value="lax" layout="emphasized" shape="box" size="xl" placeholder="Departure" style="width: 249px;" required>
 			<label slot="label">From</label>
 			<span slot="helptext">Example help text</span>

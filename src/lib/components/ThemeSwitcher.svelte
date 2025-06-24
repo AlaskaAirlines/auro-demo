@@ -119,7 +119,7 @@ onMount(() => {
     <auro-select id="theme-select">
       <auro-menu>
         {#each themes as theme}
-          <auro-menuoption class="py-2 px-3" value={theme.value}>{theme.label}</auro-menuoption>
+          <auro-menuoption value={theme.value}>{theme.label}</auro-menuoption>
         {/each}
       </auro-menu>
     </auro-select>
