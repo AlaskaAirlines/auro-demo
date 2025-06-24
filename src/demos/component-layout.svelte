@@ -42,22 +42,23 @@ AuroMenuOption.register("auro-menuoption-dev");
 		</auro-button>
 	</BackgroundContainer>
 
-	<!-- <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Datepicker</auro-header>
-	<auro-header level="5" display="300">Snowflake (only available)</auro-header>
-	<BackgroundContainer background="dark" >
+	<auro-header level="3" display="700" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Datepicker</auro-header>
+	<p class="text-(--ds-advanced-color-button-flat-text) text-sm">(only ondark available)</p>
+	<auro-header level="5" display="300">Snowflake</auro-header>
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-datepicker-dev style="width: 306px" layout="snowflake" shape="snowflake" placeholder="MM/DD">
 			<span slot="bib.fullscreen.headline">Datepicker Headline</span>
 			<span slot="fromLabel">Choose a date</span>
 			<span slot="bib.fullscreen.dateLabel">Choose a date</span>
 		</auro-datepicker-dev>
 
-		<auro-datepicker-dev disabled="" range style="width: 306px" layout="snowflake" shape="snowflake" placeholder="MM/DD">
+		<auro-datepicker-dev disabled="" range style="width: 400px" layout="snowflake" shape="snowflake" placeholder="MM/DD">
 			<span slot="bib.fullscreen.headline">Datepicker Headline</span>
 			<span slot="fromLabel">Choose a date</span>
 			<span slot="bib.fullscreen.dateLabel">Choose a date</span>
 		</auro-datepicker-dev>
 
-	</BackgroundContainer> -->
+	</BackgroundContainer>
 
 	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Counter</auro-header>
 	<auro-header level="5" display="300">Snowflake</auro-header>
@@ -283,7 +284,8 @@ AuroMenuOption.register("auro-menuoption-dev");
 		</auro-select-dev>
 	</BackgroundContainer>
 
-  <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Combobox</auro-header>
+	<auro-header level="3" display="700" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Combobox</auro-header>
+	<p class="text-(--ds-advanced-color-button-flat-text) text-sm">(only ondark available)</p>
 	<auro-header level="5" display="300">Snowflake</auro-header>
 	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-combobox-dev layout="emphasized" shape="pill" size="xl" placeholder="Placeholder content" required style="width: 249px;">
@@ -392,7 +394,8 @@ AuroMenuOption.register("auro-menuoption-dev");
 		</auro-combobox-dev>
 	</BackgroundContainer>
 
-	 <auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Input</auro-header>
+	<auro-header level="3" display="700" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Input</auro-header>
+	<p class="text-(--ds-advanced-color-button-flat-text) text-sm">(only ondark available)</p>
 	<auro-header level="5" display="300">Snowflake</auro-header>
 	<BackgroundContainer background="dark">
 		<auro-input-dev id="snowflakePill" layout="snowflake" shape="snowflake" size="lg" placeholder="Departure" style="width: 249px;" required>
