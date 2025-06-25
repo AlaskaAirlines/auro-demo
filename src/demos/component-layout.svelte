@@ -31,6 +31,7 @@ AuroInput.register("auro-input-dev");
 AuroCombobox.register("auro-combobox-dev");
 AuroMenu.register("auro-menu-dev");
 AuroMenuOption.register("auro-menuoption-dev");
+</script>
 
 <div class="space-y-8">
 	
@@ -458,6 +459,6 @@ AuroMenuOption.register("auro-menuoption-dev");
 
 </div>
 
-<style lang="scss">
+<style>
 
 </style>
