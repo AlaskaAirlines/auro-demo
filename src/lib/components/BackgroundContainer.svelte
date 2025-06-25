@@ -16,14 +16,14 @@ let darkContainerRef = $state<HTMLElement | null>(null);
 // MutationObserver to watch for changes in the DOM
 let observer: MutationObserver;
 
-// Function to set the ondark attribute on all top-level auro-* web components
+// Function to manage the ondark attribute on all top-level auro-* web components
 function updateChildrenAttributes() {
 	if (!containerRef) return;
 
-	const isDark = background === "dark" || false;
+	const isLight = background === "light" || false;
 
 	// Function to process all top-level auro-* web components in a container
-	function processAuroElements(container: Element, forceDark: boolean = false) {
+	function processAuroElements(container: Element, isDark: boolean) {
 		// Get all direct children of the container
 		Array.from(container.children).forEach((child) => {
 			// Skip non-element nodes
@@ -32,22 +32,31 @@ function updateChildrenAttributes() {
 			// Check if the element is an auro-* web component
 			const nodeName = child.nodeName.toLowerCase();
 			if (nodeName.startsWith("auro-")) {
-				// Update the ondark attribute based on the container's background
-				if (isDark || forceDark) {
+				if (isDark) {
+					// Add ondark attribute for dark backgrounds
 					child.setAttribute("ondark", "");
 				} else {
+					// Remove ondark attribute for light backgrounds
 					child.removeAttribute("ondark");
 				}
 			}
 		});
 	}
 
-	// Process all auro-* elements in the main container
-	processAuroElements(containerRef);
+	if (showBoth) {
+		// For the showBoth case, we need to explicitly process each container differently
+		if (containerRef) {
+			// Light container should not have ondark
+			processAuroElements(containerRef, false);
+		}
 
-	// If showing both and dark container reference exists, set ondark on auro-* elements in dark container
-	if (showBoth && darkContainerRef) {
-		processAuroElements(darkContainerRef, true);
+		if (darkContainerRef) {
+			// Dark container should have ondark
+			processAuroElements(darkContainerRef, true);
+		}
+	} else {
+		// For single container, process based on the background prop
+		processAuroElements(containerRef, background === "dark");
 	}
 }
 
@@ -71,6 +80,8 @@ onMount(() => {
 	}
 
 	// If showing both, also observe the dark container
+	// Note: Since we're only removing ondark from light backgrounds,
+	// we don't need special handling for the dark container
 	if (showBoth && darkContainerRef) {
 		observer.observe(darkContainerRef, {
 			childList: true,
