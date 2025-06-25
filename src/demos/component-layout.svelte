@@ -14,6 +14,8 @@ import {
 import { AuroDatePicker } from "@aurodesignsystem/auro-formkit/auro-datepicker/class";
 import { AuroDropdown } from "@aurodesignsystem/auro-formkit/auro-dropdown/class";
 import { AuroInput } from "@aurodesignsystem/auro-formkit/auro-input/class";
+import "@aurodesignsystem/auro-formkit/auro-checkbox";
+import "@aurodesignsystem/auro-formkit/auro-radio";
 import {
 	AuroMenu,
 	AuroMenuOption,
@@ -29,7 +31,6 @@ AuroInput.register("auro-input-dev");
 AuroCombobox.register("auro-combobox-dev");
 AuroMenu.register("auro-menu-dev");
 AuroMenuOption.register("auro-menuoption-dev");
-</script>
 
 <div class="space-y-8">
 	
@@ -40,6 +41,27 @@ AuroMenuOption.register("auro-menuoption-dev");
 		<auro-button ondark={true} shape="circle">
 			<auro-icon customcolor category="interface" name="account-filled"></auro-icon>
 		</auro-button>
+	</BackgroundContainer>
+
+	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Checkbox</auro-header>
+	<BackgroundContainer showBoth >
+		<auro-checkbox-group>
+			<span slot="legend">Form label goes here</span>
+			<auro-checkbox ondark={true} value="value1" name="basic" id="checkbox-basic1">Checkbox option</auro-checkbox>
+			<auro-checkbox ondark={true} value="value2" name="basic" id="checkbox-basic2" checked>Checkbox option</auro-checkbox>
+			<auro-checkbox ondark={true} value="value3" name="basic" id="checkbox-basic3">Checkbox option that has some extra text that should wrap when rendered in a narrow container</auro-checkbox>
+			<auro-checkbox ondark={true} value="value4" name="basic" id="checkbox-basic4">Checkbox option</auro-checkbox>
+		</auro-checkbox-group>
+	</BackgroundContainer>
+
+	<auro-header level="3" display="700" color="var(--ds-basic-color-brand-primary)">Radio</auro-header>
+	<BackgroundContainer showBoth >
+		<auro-radio-group ondark={true} validity="valid">
+			<span slot="legend">Form label goes here</span>
+			<auro-radio ondark={true} id="basicGroupRadio1" label="Yes" name="radioDemo" value="yes" tabindex="0" checked=""></auro-radio>
+			<auro-radio ondark={true} id="basicGroupRadio2" label="No" name="radioDemo" value="no" tabindex="-1"></auro-radio>
+			<auro-radio ondark={true} id="basicGroupRadio3" label="Maybe" name="radioDemo" value="maybe" tabindex="-1"></auro-radio>
+		</auro-radio-group>
 	</BackgroundContainer>
 
 	<auro-header level="3" display="700" margin="both" size="none" color="var(--ds-basic-color-brand-primary)">Datepicker</auro-header>
