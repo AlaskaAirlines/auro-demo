@@ -175,7 +175,7 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
 	<auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-dropdown-dev ondark={true} aria-label="custom label" shape="pill" size="xl" layout="emphasized" style="width: 249px;">
 			<span slot="label">Dropdown label</span>
 			<span slot="helpText">helpText content</span>
@@ -296,7 +296,7 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
 	<auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-select-dev required ondark={true} layout="emphasized" shape="pill" size="xl" value="flights" forceDisplayValue style="display:inline-block;">
 			<span slot="bib.fullscreen.headline">Bib Headline</span>
 			<span slot="label">Select label</span>
@@ -401,7 +401,7 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
   <auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-combobox-dev ondark={true} layout="emphasized" shape="pill" size="xl" placeholder="Placeholder content" required style="width: 300px;">
 			<span slot="bib.fullscreen.headline">Bib Headline</span>
 			<span slot="label">Name</span>
@@ -465,7 +465,7 @@ AuroMenuOption.register("auro-menuoption-dev");
 	</BackgroundContainer>
 
 	<auro-header level="5" display="300">Emphasized</auro-header>
-	<BackgroundContainer showBoth class="flex flex-row gap-4">
+	<BackgroundContainer background="dark" class="flex flex-row gap-4">
 		<auro-input-dev ondark={true} id="beta" layout="emphasized" shape="pill" size="xl" placeholder="Departure" style="width: 249px;" required>
 			<label slot="label">From</label>
 			<span slot="helptext">helptext content</span>
