@@ -44,7 +44,7 @@
 	"dependencies": {
 		"@aurodesignsystem/auro-button": "^11.1.0",
 		"@aurodesignsystem/auro-card": "^5.1.1",
-		"@aurodesignsystem/auro-formkit": "npm:@aurodesignsystem-dev/auro-formkit@^0.0.0-pr624.19",
+		"@aurodesignsystem/auro-formkit": "npm:@aurodesignsystem-dev/auro-formkit@^0.0.0-pr624.20",
 		"@aurodesignsystem/auro-header": "^4.0.1",
 		"@aurodesignsystem/auro-hyperlink": "^5.2.0",
 		"@aurodesignsystem/auro-icon": "^8.0.4",
