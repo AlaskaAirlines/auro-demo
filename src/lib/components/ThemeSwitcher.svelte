@@ -99,7 +99,6 @@ onMount(() => {
 		const themeSelect = document.getElementById(
 			"theme-select",
 		) as AuroSelectElement;
-		themeSelect.value = themeToUse;
 		if (themeSelect) {
 			// Set the value and trigger the component to update its UI
 			themeSelect.value = themeToUse;
@@ -110,13 +109,14 @@ onMount(() => {
 				handleThemeChange(customEvent);
 			});
 		}
-	}, 100); // Give the component a bit more time to fully initialize
+	}, 100);
+	// Give the component a bit more time to fully initialize
 });
 </script>
 
 <div class="theme-switcher">
   <div class="relative">
-    <auro-select id="theme-select" required>
+    <auro-select id="theme-select" required={true}>
       <auro-menu>
         {#each themes as theme}
           <auro-menuoption value={theme.value}>{theme.label}</auro-menuoption>
