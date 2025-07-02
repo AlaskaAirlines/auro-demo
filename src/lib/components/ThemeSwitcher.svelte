@@ -116,7 +116,7 @@ onMount(() => {
 
 <div class="theme-switcher">
   <div class="relative">
-    <auro-select id="theme-select">
+    <auro-select id="theme-select" required>
       <auro-menu>
         {#each themes as theme}
           <auro-menuoption value={theme.value}>{theme.label}</auro-menuoption>
